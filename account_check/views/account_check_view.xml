@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-       
+
     <!--  Checks -->
         <record model="ir.ui.view" id="view_account_check_tree">
             <field name="name">account.check.tree</field>
@@ -36,7 +36,7 @@
                 </tree>
             </field>
         </record>
-                  
+
         <record model="ir.ui.view" id="view_account_check_form">
             <field name="name">account.check.form</field>
             <field name="model">account.check</field>
@@ -65,7 +65,7 @@
                     <h1>
                         <field name="name"/>
                     </h1>
-                    <group>  
+                    <group>
                         <group>
                             <field name="journal_id"/>
                             <field name="checkbook_id" attrs="{'invisible':[('type','!=','issue_check')],'required':[('type','=','issue_check')]}" domain="[('journal_id', '=', journal_id)]"/>
@@ -74,7 +74,7 @@
                             <field name="amount"/>
                             <field name="amount_currency" attrs="{'invisible': [('amount_currency', '=', 0.0)]}"/>
                         </group>
-                        <group>    
+                        <group>
                             <field name="state"/>
                             <field name="owner_name" attrs="{'invisible':[('type','!=','third_check')],'required':[('type','=','third_check')]}"/>
                             <field name="owner_vat" attrs="{'invisible':[('type','!=','third_check')],'required':[('type','=','third_check')]}"/>
@@ -102,14 +102,14 @@
                             </form>
                         </field>
                     </group>
-                </sheet>    
+                </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="message_ids" widget="mail_thread"/>
-                </div>                
+                </div>
                 </form>
             </field>
-        </record> 
+        </record>
 
         <record model="ir.ui.view" id="view_account_check_create_form">
             <field name="name">account.check.create.form</field>
@@ -154,15 +154,15 @@
                     </group>
                 </search>
             </field>
-        </record> 
+        </record>
 
         <record model="ir.ui.view" id="view_account_check_calendar">
             <field name="name">account.check.calendar</field>
             <field name="model">account.check</field>
             <field name="arch" type="xml">
-                <calendar string="Checks" 
+                <calendar string="Checks"
                         mode="month"
-                        date_start="payment_date" 
+                        date_start="payment_date"
                         color="bank_id">
                     <field name="amount"/>
                 </calendar>
@@ -206,7 +206,7 @@
             action="action_third_check"
             id="menu_third_check"
             sequence="40"
-            parent="account_payment_fix.menu_finance_bank_and_cash"/> 
+            parent="menu_finance_bank_and_cash"/>
 
         <!-- Issued Check Menu -->
         <record model="ir.actions.act_window" id="action_issue_check">
@@ -222,6 +222,6 @@
             action="action_issue_check"
             id="menu_issue_check"
             sequence="50"
-            parent="account_payment_fix.menu_finance_bank_and_cash"/>   
+            parent="menu_finance_bank_and_cash"/>
 
 </odoo>

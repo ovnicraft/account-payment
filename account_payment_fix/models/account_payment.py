@@ -173,14 +173,10 @@ class AccountPayment(models.Model):
         original ya que se pierde si se vuelve a entrar
         """
         if self.journal_id:
-            self.currency_id = (
-                self.journal_id.currency_id or self.company_id.currency_id)
+            self.currency_id = self.journal_id.currency_id or self.company_id.currency_id
             # Set default payment method
             # (we consider the first to be the default one)
-            payment_methods = (
-                self.payment_type == 'inbound' and
-                self.journal_id.inbound_payment_method_ids or
-                self.journal_id.outbound_payment_method_ids)
+            payment_methods = self.payment_type == 'inbound' and self.journal_id.inbound_payment_method_ids or self.journal_id.outbound_payment_method_ids
             self.payment_method_id = (
                 payment_methods and payment_methods[0] or False)
         #     # Set payment method domain
